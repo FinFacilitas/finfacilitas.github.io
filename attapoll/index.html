@@ -10,15 +10,15 @@
 <script>window.PAGE='attapoll';const BASE='../';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 <style>
 /* Layout: one offer per page, centered single column on white; the hook line is the hero, the app name sits below it. Single light theme by choice. */
 :root{
   --bg:#ffffff; --ink:#15201a; --muted:#5f6c64; --line:#e3e9e5;
   --accent:#1d7a4c; --accent-ink:#ffffff; --soft:#f1f7f3;
   --cta-top:#ffd814; --cta-bot:#ffa41c; --cta-edge:#e88a00; --cta-ink:#0f1111;
-  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
-  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --display:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --body:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -33,7 +33,7 @@ body{
 main{display:flex; flex-direction:column; gap:24px}
 
 .titles{display:flex; flex-direction:column; align-items:center; text-align:center; gap:10px}
-h1{font-family:var(--display); font-weight:800; font-size:clamp(36px, 10vw, 48px); line-height:1.02; letter-spacing:-.025em; margin:0; text-wrap:balance}
+h1{font-family:var(--display); font-weight:800; font-size:clamp(36px, 10vw, 48px); line-height:1.02; letter-spacing:-.02em; margin:0; text-wrap:balance}
 .name{display:flex; align-items:baseline; justify-content:center; flex-wrap:wrap; gap:4px 10px; margin:0}
 .name strong{font-family:var(--display); font-weight:600; font-size:22px; color:var(--accent)}
 .name span{color:var(--muted); font-size:16px}
