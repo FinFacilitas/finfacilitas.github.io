@@ -87,6 +87,17 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--ink); outline-offse
 .btn.off{background:var(--line); color:var(--muted); box-shadow:none; animation:none; pointer-events:none}
 .intro{margin:0; color:var(--muted)}
 @media (prefers-reduced-motion: reduce){ .row{transition:none} }
+.info{display:flex; flex-direction:column; gap:10px}
+.info h2{font-size:15px; font-weight:700; margin:0 0 2px; color:var(--muted); text-transform:uppercase; letter-spacing:.06em}
+.info details{border:1px solid var(--line); border-radius:14px; padding:0 16px; background:var(--bg)}
+.info summary{cursor:pointer; list-style:none; padding:15px 0; font-weight:600; display:flex; justify-content:space-between; align-items:center; gap:12px}
+.info summary::-webkit-details-marker{display:none}
+.info summary::after{content:"+"; font-size:22px; line-height:1; color:var(--accent); font-weight:500}
+.info details[open] summary::after{content:"\2212"}
+.info details[open] summary{border-bottom:1px solid var(--line)}
+.info .cuerpo{padding:12px 0 16px; color:var(--muted); font-size:15px}
+.info .cuerpo ul,.info .cuerpo ol{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:8px}
+.info .cuerpo p{margin:0 0 8px}
 footer{margin-top:auto; font-size:12.5px; color:var(--muted); line-height:1.5}
 footer p{margin:0}
 @media (prefers-reduced-motion: reduce){ .btn,.btn .arrow{transition:none; animation:none} .btn:hover{transform:none} }
@@ -110,7 +121,7 @@ const OFERTAS = [
     nombre: "Naiss",
     sub: "Compartir coche",
     tema: "Compartir coche",
-    gancho: "20 Sparkies de bienvenida",
+    gancho: "20 Sparkies de bienvenida (≈ 1,20 – 1,40 €)",
     puntos: [
       "20 Sparkies de bienvenida (≈ 1,20 – 1,40 €)",
       "Ganas 1 Sparkie por cada km compartido",
@@ -120,7 +131,26 @@ const OFERTAS = [
     url: "https://naiss.com/app/invite?code=9FK95K",
     boton: "Consigue tus 20 Sparkies gratis",
     avatar: "naiss",
-    codigo: "9FK95K"
+    info: [
+      { q: "Cómo funcionan los Sparkies", a: [
+        "Los Sparkies son los puntos de Naiss. Con ellos se compensa a quien comparte coche.",
+        "Al registrarte con el enlace recibes 20 Sparkies de bienvenida.",
+        "Ganas 1 Sparkie por cada kilómetro compartido.",
+        "Cada Sparkie equivale a unos 0,06 – 0,07 €, así que 100 km compartidos son aproximadamente 6 – 7 €."
+      ]},
+      { q: "Cómo se usa la app", a: [
+        "Descarga Naiss y regístrate desde el enlace de esta página para recibir los 20 Sparkies.",
+        "Comparte tus trayectos habituales con otras personas, o busca un viaje que te encaje.",
+        "Cada kilómetro compartido te suma 1 Sparkie.",
+        "Cuando acumules Sparkies puedes canjearlos, según las opciones que ofrezca la app en ese momento."
+      ]},
+      { q: "Términos a tener en cuenta", a: [
+        "El valor del Sparkie y las condiciones las fija Naiss y pueden cambiar. Los importes en euros de esta página son aproximados.",
+        "Revisa los términos y condiciones dentro de la app antes de usarla.",
+        "Esta página no es de Naiss. Es una recomendación con enlace de invitación."
+      ]}
+    ],
+    codigo: ""
   },
   {
     id: "attapoll",
@@ -184,7 +214,8 @@ function render(){
       <p class="hint">Registro en <b>1 minuto</b> desde el móvil · Enlace de invitación</p>
       ${o.codigo ? `<button class="code" type="button" id="code"><span>${esc(o.codigo)}</span><em>Copiar código</em></button>` : ""}
     </div>
-    <ul class="facts">${o.puntos.map(p => `<li>${esc(p)}</li>`).join("")}</ul>`;
+    <ul class="facts">${o.puntos.map(p => `<li>${esc(p)}</li>`).join("")}</ul>
+    ${o.info ? `<section class="info"><h2>Más información</h2>${o.info.map(i => `<details><summary>${esc(i.q)}</summary><div class="cuerpo"><ul>${i.a.map(t => `<li>${esc(t)}</li>`).join("")}</ul></div></details>`).join("")}</section>` : ""}`;
   window.scrollTo(0, 0);
   const b = document.getElementById("code");
   if (b) b.addEventListener("click", () => {
